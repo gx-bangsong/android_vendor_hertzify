@@ -103,6 +103,12 @@ endif
 # Bootanimation
 $(call inherit-product, vendor/hertzify/config/bootanimation.mk)
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images \
+    product_charger_res_images_vendor
+
 # Lineage interfaces
 PRODUCT_PACKAGES += \
     framework_compatibility_matrix.lineage.xml
