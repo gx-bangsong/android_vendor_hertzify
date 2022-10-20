@@ -53,12 +53,12 @@
         <item>com.shannon.imsservice</item>
         <!-- MediaTek ImsService -->
         <item>com.mediatek.ims</item>
-        <!-- SystemUI -->
-        <item>com.android.systemui</item>
         <!-- Tethering -->
         <item>com.android.networkstack.tethering</item>
         <!-- GMS location history -->
         <item>com.google.android.gms.location.history</item>
+        <!-- SystemUI -->
+        <item>com.android.systemui</item>
     </string-array>
 
     <!-- Set this to true to enable the platform's auto-power-save modes like doze and
