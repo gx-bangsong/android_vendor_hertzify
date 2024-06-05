@@ -169,6 +169,10 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/%/libfuse-lite.so \
     system/%/libntfs-3g.so
 
+# Default wifi country code
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.boot.wificountrycode?=00
+
 # FRP
 PRODUCT_COPY_FILES += \
     vendor/hertzify/prebuilt/common/bin/wipe-frp.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wipe-frp
