@@ -243,7 +243,9 @@ PRODUCT_COPY_FILES += \
 
 # Packages
 PRODUCT_PACKAGES += \
-    GameSpace
+    GameSpace \
+    LMOFreeform \
+    LMOFreeformSidebar
 
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
