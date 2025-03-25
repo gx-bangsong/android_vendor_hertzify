@@ -144,6 +144,9 @@
         <item>org.briarproject.briar.android</item>
     </string-array>
 
+    <!-- Indicating if keyboard vibration settings supported or not. -->
+    <bool name="config_keyboardVibrationSettingsSupported">true</bool>
+
     <!-- Define device configs on boot -->
     <string-array name="global_device_configs_override">
         <!-- Disable always screen on -->
