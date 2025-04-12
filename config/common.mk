@@ -142,7 +142,8 @@ PRODUCT_PACKAGES += \
 
 # Custom Overlays
 PRODUCT_PACKAGES += \
-    PixelLauncherOverlayCustom
+    PixelLauncherOverlayCustom \
+    PixelLauncherNoGestureHintOverlay
     
 # Disable async MTE on a few processes
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
