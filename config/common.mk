@@ -115,6 +115,15 @@ ifneq ($(TARGET_DISABLE_EPPE),true)
 $(call enforce-product-packages-exist-internal,$(lastword $(_include_stack)),product_manifest.xml rild Calendar android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
 endif
 
+# APEX
+DISABLE_DEXPREOPT_CHECK := true
+
+PRODUCT_PACKAGES += \
+    com.google.android.permission
+
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/apex/com.google.android.permission.apex
+
 # Bootanimation
 $(call inherit-product, vendor/hertzify/config/bootanimation.mk)
 
