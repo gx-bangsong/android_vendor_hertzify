@@ -23,6 +23,7 @@ SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 $(HERTZIFY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(HERTZIFY_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(HERTZIFY_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(HERTZIFY_TARGET_PACKAGE).sha256sum
+	$(hide) ./vendor/hertzify/build/tools/createjson.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(HERTZIFY_VERSION).zip
 	@echo "Package Complete: $(HERTZIFY_TARGET_PACKAGE)" >&2
 
 .PHONY: bacon
