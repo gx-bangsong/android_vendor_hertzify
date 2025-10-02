@@ -24,6 +24,7 @@ $(HERTZIFY_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(HERTZIFY_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(HERTZIFY_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(HERTZIFY_TARGET_PACKAGE).sha256sum
 	$(hide) ./vendor/hertzify/build/tools/createjson.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(HERTZIFY_VERSION).zip
+	$(hide) ./vendor/hertzify/build/tools/ascii_output.sh
 	@echo "Package Complete: $(HERTZIFY_TARGET_PACKAGE)" >&2
 
 .PHONY: bacon
