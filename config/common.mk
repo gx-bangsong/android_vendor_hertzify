@@ -144,7 +144,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     PixelLauncherOverlayCustom \
     PixelLauncherNoGestureHintOverlay \
-    WallpaperOverlay
+    WallpaperOverlay \
+    AndroidBlackThemeOverlay
     
 # DeviceAsWebcam
 ifeq ($(TARGET_BUILD_DEVICE_AS_WEBCAM), true)
