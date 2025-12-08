@@ -118,6 +118,13 @@ endif
 # Bootanimation
 $(call inherit-product, vendor/hertzify/config/bootanimation.mk)
 
+# Blur
+TARGET_ENABLE_BLUR ?= true
+ifeq ($(TARGET_ENABLE_BLUR), true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1
+endif
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images \
