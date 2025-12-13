@@ -16,6 +16,6 @@ aconfig_values {
     name: "aconfig-values-hertzify-bp4a-android.view.accessibility-all",
     package: "android.view.accessibility",
     srcs: [
-        "*_flag_values.textproto",
+        "*.textproto",
     ],
 }
