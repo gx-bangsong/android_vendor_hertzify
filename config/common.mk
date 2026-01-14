@@ -268,7 +268,14 @@ CUSTOM_LOCALES += \
 
 # Use a generic profile based boot image by default
 PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+PRODUCT_COPY_FILES += \
+    art/build/boot/preloaded-classes:$(TARGET_COPY_OUT_SYSTEM)/etc/preloaded-classes
+
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := \
+    art/build/boot/boot-image-profile.txt
+
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/etc/preloaded-classes
 
 include vendor/hertzify/config/version.mk
 
