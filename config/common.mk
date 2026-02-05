@@ -140,6 +140,10 @@ PRODUCT_PACKAGES += \
     product_charger_res_images \
     product_charger_res_images_vendor
 
+# Custom Overlays
+PRODUCT_PACKAGES += \
+    PixelLauncherOverlayCustom
+    
 # Disable async MTE on a few processes
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.arm64.memtag.app.com.android.se=off \
