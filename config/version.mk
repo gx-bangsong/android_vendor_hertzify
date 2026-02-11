@@ -1,45 +1,32 @@
-PRODUCT_VERSION_MAJOR = 23
-PRODUCT_VERSION_MINOR = 2
+ANDROID_VERSION := 16
+HERTZIFY_BUILD_VERSION := 1.5
+HERTZIFY_BUILD_TYPE ?= UNOFFICIAL
+HERTZIFY_MAINTAINER ?= UNKNOWN
+HERTZIFY_DATE_YEAR := $(shell date -u +%Y)
+HERTZIFY_DATE_MONTH := $(shell date -u +%m)
+HERTZIFY_DATE_DAY := $(shell date -u +%d)
+HERTZIFY_BUILD_DATE := $(HERTZIFY_DATE_YEAR)$(HERTZIFY_DATE_MONTH)$(HERTZIFY_DATE_DAY)
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
-
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
-
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
+# OFFICIAL_DEVICES
+ifeq ($(HERTZIFY_BUILD_TYPE), OFFICIAL)
+  LIST = $(shell cat vendor/hertzify/config/hertzify.devices)
+    ifeq ($(filter $(HERTZIFY_BUILD), $(LIST)), $(HERTZIFY_BUILD))
+      IS_OFFICIAL=true
+      HERTZIFY_BUILD_TYPE := OFFICIAL
+    endif
+    ifneq ($(IS_OFFICIAL), true)
+      HERTZIFY_BUILD_TYPE := UNOFFICIAL
+      $(error Device is not official "$(HERTZIFY_BUILD)")
     endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
-endif
+HERTZIFY_VERSION := HertzifyOS-$(HERTZIFY_BUILD_VERSION)-$(HERTZIFY_BUILD)-$(HERTZIFY_BUILD_DATE)-$(HERTZIFY_BUILD_TYPE)
 
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# LineageOS version properties
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE)
+# HertzifyOS System Version
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.hertzify.version=$(HERTZIFY_VERSION) \
+    ro.hertzify.device=$(HERTZIFY_BUILD) \
+    ro.hertzify.maintainer=$(HERTZIFY_MAINTAINER) \
+    ro.hertzify.build.version=$(HERTZIFY_BUILD_VERSION) \
+    ro.hertzify.build.type=$(HERTZIFY_BUILD_TYPE) \
+    ro.hertzify.build.date=$(HERTZIFY_BUILD_DATE)
