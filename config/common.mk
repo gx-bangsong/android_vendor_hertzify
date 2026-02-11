@@ -305,6 +305,9 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := \
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/etc/preloaded-classes
 
+# GMS
+include vendor/hertzify/config/gms.mk
+
 include vendor/hertzify/config/version.mk
 
 -include vendor/hertzify-priv/keys/keys.mk
