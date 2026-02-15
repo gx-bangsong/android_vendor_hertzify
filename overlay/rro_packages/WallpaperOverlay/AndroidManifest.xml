@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.system.qs.wallpaperoverlay"
+    android:versionCode="1"
+    android:versionName="1.0">
+    <overlay android:targetPackage="com.google.android.apps.wallpaper" android:category="android.theme.customization.wallpaper" android:priority="1"/>
+    <application android:label="Wallpaper Overlay" android:hasCode="false" android:allowBackup="false"/>
+</manifest>
