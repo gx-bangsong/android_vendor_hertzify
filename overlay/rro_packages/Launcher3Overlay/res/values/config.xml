@@ -17,6 +17,6 @@
 <resources>
 
     <!-- Default packages -->
-    <string name="wallpaper_picker_package" translatable="false">com.android.wallpaper</string>
+    <string name="wallpaper_picker_package" translatable="false">com.google.android.apps.wallpaper</string>
 
 </resources>
