@@ -259,6 +259,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/hertzify/config/permissions/privapp-permissions-hertzify.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-hertzify.xml
 
+# Quick Switch
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.default_launcher=1 \
+    persist.sys.quickswitch_pixel_shipped=1
+
 # rsync
 PRODUCT_PACKAGES += \
     rsync
