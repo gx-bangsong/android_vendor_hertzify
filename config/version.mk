@@ -9,7 +9,7 @@ HERTZIFY_BUILD_DATE := $(HERTZIFY_DATE_YEAR)$(HERTZIFY_DATE_MONTH)$(HERTZIFY_DAT
 
 # OFFICIAL_DEVICES
 ifeq ($(HERTZIFY_BUILD_TYPE), OFFICIAL)
-  LIST = $(shell cat vendor/hertzify/config/hertzify.devices)
+  LIST = $(shell cat OTA/devices/hertzify.devices)
     ifeq ($(filter $(HERTZIFY_BUILD), $(LIST)), $(HERTZIFY_BUILD))
       IS_OFFICIAL=true
       HERTZIFY_BUILD_TYPE := OFFICIAL
