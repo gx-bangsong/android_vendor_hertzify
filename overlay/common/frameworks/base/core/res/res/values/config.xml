@@ -142,6 +142,10 @@
         <item>im.vector.app</item>
         <item>cx.ring</item>
         <item>org.briarproject.briar.android</item>
+        <item>com.tencent.mobileqq</item>
+        <item>com.tencent.qqlite</item>
+        <item>com.alibaba.android.rimet</item>
+        <item>com.ss.android.lark</item>
     </string-array>
 
     <!-- Indicating if keyboard vibration settings supported or not. -->
